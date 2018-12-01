@@ -16,9 +16,14 @@
 			<!-- data inserted by javascript -->
 		</div>
 		<div id = "loginDiv">
-			<form class = "loginForm" action="/take_username" method="POST">
+			<form class = "loginForm" action="/login" method="POST">
 				<input id = "loginInput" type="text" name="username" placeholder="User Name">
 				<button id = "loginButton">Enter Site</button>
+					<h4 id="errorMessage">
+					{% if error %}
+					{{error}}
+					{% endif %}
+					</h4>
 			</form>
 		</div>
 		<script src="static/js/main.js"></script>

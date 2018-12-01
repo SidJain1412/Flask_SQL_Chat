@@ -20,9 +20,23 @@ div {
 	font-weight: bold;
 }
 
-#loginDiv {
-	background: grey;
+#errorMessage {
+	padding:1px;
+	color:#E86666;
+	width: 300px;
 	text-align: center;
+	margin: auto;
+	font-weight: lighter;
+	text-shadow: 1px 0 0;
+}
+
+#loginDiv {
+	background: #CECECE;
+	text-align: center;
+}
+
+#loginInput {
+	padding: 5px;
 }
 
 #loginButton {
