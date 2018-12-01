@@ -1,11 +1,4 @@
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-import model
-
-app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost/flask0.3'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-db = SQLAlchemy(app)
+from app import db
 
 
 class User(db.Model):
@@ -31,21 +24,3 @@ class Message(db.Model):
 
     def __repr__(self):
         return '<Message %r>' % self.message
-
-
-@app.route('/')
-def index():
-    return render_template('login.html')
-
-
-@app.route('/take_username', methods=["POST"])
-def take_username():
-    try:
-        username = request.form['username']
-        return render_template('chat.html', username=username)
-    except Exception as e:
-        return render_template('login.html')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
