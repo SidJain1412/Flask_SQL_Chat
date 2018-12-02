@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="static/css/chatStyle.css">
 </head>
 <body>
 	<title>
@@ -9,5 +10,16 @@
 	<header>
 		Welcome {{username}}
 	</header>
+	<div id="messagesDiv">
+		{% if messages %}
+			<h3>
+				<ul id="message" style="margin: 10px;">
+				{% for message in messages %}
+					{{message.sentBy.username}} :&emsp; {{ message.message }}<br>
+				{% endfor %}
+				</ul>
+			</h3>
+		{% endif %}
+	</div>
 </body>
 </head>

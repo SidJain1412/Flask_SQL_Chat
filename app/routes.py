@@ -1,7 +1,6 @@
 from flask import render_template, request, jsonify, redirect
 from app.models import User, Message
-from app import app
-from app import db
+from app import app, db
 
 
 @app.route('/')
@@ -19,7 +18,9 @@ def take_username():
                 user = User(username=username)
                 db.session.add(user)
                 db.session.commit()
-            return render_template('chat.html', username=username)
+            messages = Message.query.all()
+            return render_template('chat.html', username=username,
+                                   messages=messages)
         else:
             return render_template('login.html',
                                    error="Please enter a valid username")
