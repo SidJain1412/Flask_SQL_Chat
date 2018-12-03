@@ -20,6 +20,12 @@
 				</ul>
 			</h3>
 		{% endif %}
+		<div id="messagesInputDiv">
+			<form class="messageForm" action = "/send_message" method="POST">
+				<input id = "messageInput" type="text" name="message" placeholder="Start typing...">
+				<button id = "sendButton">Send Message</button>
+			</form>
+		</div>
 	</div>
 </body>
 </head>
