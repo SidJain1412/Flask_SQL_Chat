@@ -1,5 +1,5 @@
 from flask import render_template, request
-from views import verify_username, get_all_messages
+from app.views import verify_username, get_all_messages
 from app import app
 
 

@@ -10,22 +10,26 @@
 	<header>
 		Welcome {{username}}
 	</header>
-	<div id="messagesDiv">
-		{% if messages %}
-			<h3>
-				<ul id="message" style="margin: 10px;">
-				{% for message in messages %}
-					{{message.sentBy.username}} :&emsp; {{ message.message }}<br>
-				{% endfor %}
-				</ul>
-			</h3>
-		{% endif %}
-		<div id="messagesInputDiv">
-			<form class="messageForm" action = "/send_message" method="POST">
-				<input id = "messageInput" type="text" name="message" placeholder="Start typing...">
-				<button id = "sendButton">Send Message</button>
-			</form>
+	<article>
+		<div id="messagesDiv">
+			{% if messages %}
+				<h3>
+					<ul id="message" style="margin: 10px;">
+					{% for message in messages %}
+						{{message.sentBy.username}} :&emsp; {{ message.message }}<br>
+					{% endfor %}
+					</ul>
+				</h3>
+			{% endif %}
 		</div>
-	</div>
+		<footer>
+			<div id="messagesInputDiv">
+				<form class="messageForm" action = "/send_message" method="POST">
+					<input id = "messageInput" type="text" name="message" placeholder="Start typing...">
+					<button id = "sendButton"  style="position: absolute; right: 10px;">Send Message</button>
+				</form>
+			</div>
+		</footer>
+	</article>
 </body>
-</head>
+</html>
