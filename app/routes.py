@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from app.views import verify_username, get_all_messages
 from app import app
+from flask import jsonify
 
 
 @app.route('/')
@@ -22,3 +23,10 @@ def take_username():
     except Exception as e:
         print(str(e))
         return redirect(url_for('index'))
+
+
+@app.route('/test', methods=["GET"])
+def test():
+    data = {"message": "yooo"}
+    print("Working")
+    return jsonify(data)
