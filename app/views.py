@@ -12,3 +12,9 @@ def verify_username(username):
 
 def get_all_messages():
     return Message.query.all()
+
+
+def add_message(message):
+    new_msg = Message(message=message, sender=1)
+    db.session.add(new_msg)
+    db.session.commit()

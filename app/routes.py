@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from app.views import verify_username, get_all_messages
+from app.views import verify_username, get_all_messages, add_message
 from app import app
 from flask import jsonify
 
@@ -30,3 +30,11 @@ def test():
     data = {"message": "yooo"}
     print("Working")
     return jsonify(data)
+
+
+@app.route('/send_message', methods=["GET", "POST"])
+def send_message():
+    message = request.form['message']
+    add_message(message)
+    messages = get_all_messages()
+    return "yes"
