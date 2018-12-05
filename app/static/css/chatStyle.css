@@ -20,11 +20,12 @@ article {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
 }
+
 #message {
-	background: #F5F5F5;
+	background: white;
 	padding: 10px;
 	font-size: 15px;
-	line-height: 175%;
+	line-height: 200%;
 	margin-right: 10px;
 }
 
