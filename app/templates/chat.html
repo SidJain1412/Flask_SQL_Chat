@@ -10,25 +10,23 @@
 	<header>
 		Welcome, {{username}}
 	</header>
-	<article>
-		<div id="messagesDiv">
-			{% if messages %}
-			<p id="message" style="margin: 10px;">
-				{% for message in messages %}
-					{{message.sentBy.username}}:&emsp;{{ message.message }}<br>
-				{% endfor %}				
-			</p>
-			{% endif %}
-		</div>
-		<footer>
+	<div id="messagesDiv">
+		{% if messages %}
+		<p id="message" style="margin: 10px;">
+			{% for message in messages %}
+				{{message.sentBy.username}}:&emsp;{{ message.message }}<br>
+			{% endfor %}				
+		</p>
+		{% endif %}
+	</div>
+	<footer>
+		<div id="messagesInputDiv">
 			<form id="messageForm" action="/send_message" method="post" name="messageForm">
-				<div id="messagesInputDiv">
-						<input id = "messageInput" type="text" name="message" placeholder="Start typing...">
-						<input id = "sendButton" type="submit" style="position: absolute; right: 10px;" value="Send Message"/>
-				</div>
+					<input id = "messageInput" type="text" name="message" placeholder="Start typing...">
+					<input id = "sendButton" type="submit" value="Send Message"/>
 			</form>
-		</footer>
-	</article>
+		</div>
+	</footer>
 	<!-- <input id = "testButton" type="button" value="Test"/> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="static/js/main.js"></script>
