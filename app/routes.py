@@ -35,6 +35,16 @@ def test():
 @app.route('/send_message', methods=["GET", "POST"])
 def send_message():
     message = request.form['message']
-    add_message(message)
+    if message:
+        add_message(message)
+    else:
+        pass
     messages = get_all_messages()
-    return "yes"
+    print(messages[-1])
+    return jsonify(messages[-1])
+
+
+@app.route('/get_last_message', methods=["GET"])
+def get_last_message():
+    message = get_all_messages()[-1]
+    return jsonify(message)

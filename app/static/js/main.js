@@ -24,4 +24,12 @@ $('#messageForm').submit(function(e){
             console.log("called send_message");
         }
     });
+    $.ajax({
+    	url:'/send_message',
+    	type:'get',
+    	success: function(msg){
+            console.log("getting message")
+    		$('#message').html()=$('#message').html+msg.sentBy.username+":&emsp;"+msg.message+"<br>";
+    	}
+    })
 });
