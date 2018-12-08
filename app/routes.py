@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, json
 from app.views import verify_username, get_all_messages, add_message
 from app import app
 from flask import jsonify
@@ -32,16 +32,19 @@ def test():
     return jsonify(data)
 
 
-@app.route('/send_message', methods=["GET", "POST"])
+@app.route('/send_message', methods=["POST"])
 def send_message():
-    message = request.form['message']
+    message = request.get_json()
+    print("MESSAGE", message)
+    print(message['message'])
     if message:
-        add_message(message)
+        add_message(message['message'], message['username'])
     else:
         pass
-    messages = get_all_messages()
-    print(messages[-1])
-    return jsonify(messages[-1])
+    # messages = get_all_messages()
+    # print(messages[-1])
+    # return jsonify(messages[-1])
+    return "WORKS"
 
 
 @app.route('/get_last_message', methods=["GET"])

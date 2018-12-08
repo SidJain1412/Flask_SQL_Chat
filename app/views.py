@@ -14,7 +14,8 @@ def get_all_messages():
     return Message.query.all()
 
 
-def add_message(message):
-    new_msg = Message(message=message, sender=1)
+def add_message(message, username):
+    sender_id = User.query.filter_by(username=username).first().id
+    new_msg = Message(message=message, sender=sender_id)
     db.session.add(new_msg)
     db.session.commit()

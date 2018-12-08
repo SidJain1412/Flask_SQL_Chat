@@ -8,7 +8,8 @@
 		Chat!
 	</title>
 	<header>
-		Welcome, {{username}}
+		Welcome, 
+		<label id="username">{{ username }}</label>
 	</header>
 	<div id="messagesDiv">
 		{% if messages %}
