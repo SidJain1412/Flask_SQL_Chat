@@ -11,7 +11,7 @@ def verify_username(username):
 
 
 def get_all_messages():
-    return Message.query.all()
+    return Message.query.limit(10)
 
 
 def add_message(message, username):

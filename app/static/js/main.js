@@ -1,9 +1,3 @@
-// $(document).ready(function() {
-// 	$('#sendButton').click(function(){
-// 		$("#message").append($('#messageInput').val()+ "<br>");
-// 	}) 
-// });
-
 // $(document).ready(function(){
 // 	$('#testButton').click(function(){
 // 		fetch('/test').then(response => {
@@ -14,11 +8,11 @@
 // 	})
 // })
 
-// var username = document.getElementById('username').value;
 
 $('#messageForm').submit(function(e){
     e.preventDefault();
     var msg = $('input[name=message]').val();
+    $('input[name=message]').val("");
     var username = $('#username').text();
     data = {};
     data['message'] = msg;
@@ -30,16 +24,12 @@ $('#messageForm').submit(function(e){
         url:'/send_message',
         type:'post',
         data: JSON.stringify(data),
-        success:function(){
+        success:function(result){
+            $('#message').append(result.sender+":&emsp;"+result.message+"<br>");
             console.log("called send_message");
+        },
+        error:function(err){
+            console.log("Empty message");
         }
     });
-    // $.ajax({
-    // 	url:'/send_message',
-    // 	type:'get',
-    // 	success: function(msg){
-    //         console.log("getting message")
-    // 		$('#message').html()=$('#message').html+msg.sentBy.username+":&emsp;"+msg.message+"<br>";
-    // 	}
-    // })
 });

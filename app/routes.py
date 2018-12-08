@@ -36,15 +36,15 @@ def test():
 def send_message():
     message = request.get_json()
     print("MESSAGE", message)
-    print(message['message'])
-    if message:
+    if len(message['message']) > 0:
         add_message(message['message'], message['username'])
+        messages = get_all_messages()
+        data = {}
+        data['message'] = messages[-1].message
+        data['sender'] = messages[-1].sentBy.username
+        return jsonify(data)
     else:
         pass
-    # messages = get_all_messages()
-    # print(messages[-1])
-    # return jsonify(messages[-1])
-    return "WORKS"
 
 
 @app.route('/get_last_message', methods=["GET"])
