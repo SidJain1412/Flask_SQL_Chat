@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, json
+from flask import render_template, request, redirect, url_for
 from app.views import verify_username, get_all_messages, add_message
 from app import app
 from flask import jsonify
@@ -45,9 +45,3 @@ def send_message():
         return jsonify(data)
     else:
         pass
-
-
-@app.route('/get_last_message', methods=["GET"])
-def get_last_message():
-    message = get_all_messages()[-1]
-    return jsonify(message)

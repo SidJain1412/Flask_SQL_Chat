@@ -1,12 +1,3 @@
-// $(document).ready(function(){
-// 	$('#testButton').click(function(){
-// 		fetch('/test').then(response => {
-// 			return response.json();
-// 		}).then(data => {
-// 			console.log(data.message);
-// 		})
-// 	})
-// })
 
 
 $('#messageForm').submit(function(e){
